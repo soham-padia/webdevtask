@@ -1,0 +1,22 @@
+<div class="grid grid-cols-5 gap-4 pt-10">
+  <div *ngFor="let card of cards" class="">
+    <div *ngIf="card.question=='';then nil else notnil"></div>
+    <ng-template #nil></ng-template>
+    <ng-template #notnil>
+    <mat-card class="">
+    <mat-card-header>
+      <mat-card-title>{{decode(card.question.toString())}}</mat-card-title>
+      <mat-card-subtitle>Type: {{card.type}} , Difficulty: {{card.difficulty}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div *ngFor="let answer of card.answers" class="">
+        <button mat-button color="primary" class="quiz-option-button" (click)="getAns(answer.correctAnswer,card.question)" fxFlex="100" [innerHtml]=answer.answer></button>
+      </div>
+
+    </mat-card-content>
+  </mat-card>
+    </ng-template>
+    </div>
+
+  <h1 class="w-screen text-8xl">Score: {{count}}/10</h1>
+</div>
