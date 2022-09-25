@@ -55,6 +55,7 @@ export class HomeComponent implements OnInit {
     results:[]
   };
   answerValue=0
+  questionanswerd=0
 
   // @ts-ignore
   impData:QandA[]
@@ -67,6 +68,10 @@ export class HomeComponent implements OnInit {
   getAns(question:string) {
     if (this.answerValue){
       this.count++;
+    }
+    this.questionanswerd++;
+    if (this.questionanswerd==10){
+      alert("Your final score is "+this.count)
     }
     let index = this.cards.findIndex(x => x.question === question)
     this.cards[index].question=""
