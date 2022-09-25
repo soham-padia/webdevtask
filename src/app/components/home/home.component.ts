@@ -54,6 +54,7 @@ export class HomeComponent implements OnInit {
     response_code:1,
     results:[]
   };
+  answerValue=false
 
   // @ts-ignore
   impData:QandA[]
@@ -63,9 +64,9 @@ export class HomeComponent implements OnInit {
   answer: number[]=[];
   constructor(private http:HttpClient) { }
 
-  getAns(correctAns:boolean,question:string) {
-    if (correctAns){
-      this.count++
+  getAns(question:string) {
+    if (this.answerValue){
+      this.count++;
     }
     let index = this.cards.findIndex(x => x.question === question)
     this.cards[index].question=""
