@@ -23,7 +23,7 @@ export class Cardpp{
 
 export class Answer{
   constructor(public answer:string,
-              public correctAnswer:boolean) {
+              public correctAnswer:number) {
   }
 }
 
@@ -54,7 +54,7 @@ export class HomeComponent implements OnInit {
     response_code:1,
     results:[]
   };
-  answerValue=false
+  answerValue=0
 
   // @ts-ignore
   impData:QandA[]
@@ -92,12 +92,12 @@ export class HomeComponent implements OnInit {
           this.cards[i].type=question.type
           this.cards[i].category=question.category
           this.cards[i].difficulty=question.difficulty
-          let answers=[];
-          let correctAnswer:Answer={correctAnswer:true,answer:question.correct_answer}
+          let answers:Answer[]=[];
+          let correctAnswer:Answer={correctAnswer:1,answer:question.correct_answer}
           answers.push(correctAnswer)
 
           for (let answer of question.incorrect_answers) {
-            let wrongAnswer={answer:answer,correctAnswer:false};
+            let wrongAnswer:Answer={answer:answer,correctAnswer:0};
             answers.push(wrongAnswer);
           }
           this.cards[i].answers=this.shuffle(answers)

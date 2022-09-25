@@ -10,19 +10,20 @@
       <mat-card-subtitle>Type: {{card.type}} , Difficulty: {{card.difficulty}}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-      <form #f="ngForm" name="ngForm" ngForm  (ngSubmit)="getAns(card.question)" novalidate>
       <div *ngFor="let answer of card.answers" class="">
         <!--<button mat-button color="primary" class="quiz-option-button" (click)="getAns(answer.correctAnswer,card.question)" fxFlex="100" [innerHtml]=answer.answer></button>-->
-        <input class="p-4" type="radio" name="userAnswer" (click)="answerValue=answer.correctAnswer" >{{answer.answer}}
+        <input class="p-4" type="radio" value="true" (toggle)="true" name="sameRad" (click)="answerValue=answer.correctAnswer" >{{decode(answer.answer)}} ----------- {{answer.correctAnswer==1?"Correct Answer":"Incorrect Answer"}}
       </div>
-        <button type="submit" >Submit</button>
-      </form>
-
     </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button (click)="getAns(card.question)" type="submit">Submit</button>
+      </mat-card-actions>
+      <mat-card-footer>
+        <mat-card-subtitle class="p-2">Category: {{card.category}}</mat-card-subtitle>
+      </mat-card-footer>
   </mat-card>
     </ng-template>
     </div>
   </div>
-
   <h1 class="w-screen text-8xl">Score: {{count}}/10</h1>
 </div>
