@@ -1,7 +1,7 @@
 import {Component, Injectable, OnInit} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {decode} from "html-entities";
-const route:string="https://opentdb.com/api.php?amount=10"
+const url:string="https://opentdb.com/api.php?amount=10"
 export class Card{
   constructor(public category:string,
               public type:string,
@@ -79,7 +79,7 @@ export class HomeComponent implements OnInit {
   }
 
   private async fetchData(){
-    this.http.get<any>(route).subscribe(
+    this.http.get<any>(url).subscribe(
       res=>{
         this.fetchedData=res
         /*this.fetchedData.results.map((value, index) => {
