@@ -76,6 +76,7 @@ export class HomeComponent implements OnInit {
     let index = this.cards.findIndex(x => x.question === question)
     this.cards[index].question=""
     console.log("skjdasjgb",this.cards[index])
+    this.answerValue=0
   }
 
   private async fetchData(){
